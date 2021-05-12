@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <header class='row tm-welcome-section'>
+        <h2 class='col-12 text-center tm-section-title'>Movie Orders</h2>
+        <p class='col-12 text-center'>Your Quick Access to Popular Movie Series Orders</p>
+    </header>
+
+    <div class='tm-paging-links'>
+        <nav>
+            <ul>
+                {% for genre in genres %}
+                <li class='tm-paging-item'><a href='#' class='tm-paging-link{% if forloop.counter0 == 0 %} active{% endif %}'>{{genre.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!-- Gallery -->
+    <div class='row tm-gallery'>
+        <!-- gallery page 1 -->
+        {% for genre in genres %}
+        <div id='tm-gallery-page-{{genre.name|lower}}' class='tm-gallery-page {% if forloop.counter0 > 0 %}hidden{% endif%}' >
+            {% for s in series %}
+            {% if s.genre == genre %}
+            <article class='col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item'>
+                <figure>
+                    {% if s.image %}
+                    <img src='{% static s.image %}' alt='Image' class='img-fluid tm-gallery-img'/>
+                    {% endif %}
+                    <figcaption>
+                        <h4 class='tm-gallery-title'>{{s.name}}</h4>
+<!--                        <p class='tm-gallery-price'>2000-2020</p>-->
+                    </figcaption>
+                </figure>
+            </article>
+            {% endif %}
+            {% endfor %}
+        </div> <!-- gallery page 1 -->
+        {% endfor %}
+        <!-- gallery page 2 -->
+    </div>
+</main>
+<script>
+		$(document).ready(function(){
+			// Handle click on paging links
+			$('.tm-paging-link').click(function(e){
+				e.preventDefault();
+
+				var page = $(this).text().toLowerCase();
+				console.log(page);
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+		});
+	</script>
+{% endblock content %}

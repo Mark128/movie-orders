@@ -10,8 +10,8 @@ class MoviesAdmin(admin.ModelAdmin):
 
 class SeriesAdmin(admin.ModelAdmin):
     model = Series
-    list_display = ['name', 'description', 'get_genre']
-    fields = ['name', 'description', 'genre']
+    list_display = ['name', 'description', 'get_genre', 'image']
+    fields = ['name', 'description', 'genre', 'image']
 
     def get_genre(self, obj):
         return obj.genre.name

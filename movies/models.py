@@ -1,6 +1,16 @@
 from django.db import models
 
 
+def movie_image_path(instance, filename):
+    movie = str(instance.series.name).replace(" ", "_")
+    return 'movies/img/{0}/{1}'.format(movie, filename)
+
+
+def series_image_path(instance, filename):
+    series = str(instance.name).replace(" ", "_")
+    return 'movies/img/{0}/{1}'.format(series, filename)
+
+
 class Genre(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=500, null=True)
@@ -13,14 +23,10 @@ class Series(models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.CharField(max_length=500)
     genre = models.ForeignKey(Genre, on_delete=models.PROTECT, related_name='movie_genres')
+    image = models.ImageField(upload_to=series_image_path, height_field=None, width_field=None, max_length=100, null=True)
 
     def __str__(self):
         return self.name
-
-
-def movie_image_path(instance, filename):
-    series = str(instance.series.name).replace(" ", "_")
-    return 'movies/static/movies/img/{0}/{1}'.format(series, filename)
 
 
 class Movie(models.Model):

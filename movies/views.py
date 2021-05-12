@@ -1,16 +1,20 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 
-from movies.models import Movie
+from movies.models import Movie, Series, Genre
 
 
-def all_movies(request):
-    movie_list = Movie.objects.all().order_by('name')
+def series(request):
+    series_list = Series.objects.all().order_by('name')
+
+    genres = Genre.objects.all().order_by('name')
     output = {
-        'movies': movie_list
+        'genres': genres,
+        'series': series_list
     }
+    # TODO: get from-to date for whole series
 
-    return render(request, 'movies/all-movies.html', output)
+    return render(request, 'movies/series.html', output)
 
 
 def details(request, movie_id):

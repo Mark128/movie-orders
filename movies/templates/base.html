@@ -8,6 +8,8 @@
     <title>Movie Order</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
 	<link href="{% static 'movies/mystyle.css' %}" rel="stylesheet" />
+	<script src="{% static 'movies/js/jquery.min.js' %}"></script>
+	<script src="{% static 'movies/js/parallax.min.js' %}"></script>
 </head>
 
 <body>
@@ -28,9 +30,9 @@
 						</div>
 						<nav class="col-md-6 col-12 tm-nav">
 							<ul class="tm-nav-ul">
-								<li class="tm-nav-li"><a href="index.html" class="tm-nav-link active">Home</a></li>
-								<li class="tm-nav-li"><a href="about.html" class="tm-nav-link">About</a></li>
-								<li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Contact</a></li>
+								<li class="tm-nav-li"><a href="#" class="tm-nav-link active">Home</a></li>
+								<li class="tm-nav-li"><a href="#" class="tm-nav-link">About</a></li>
+								<li class="tm-nav-li"><a href="#" class="tm-nav-link">Contact</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -46,21 +48,7 @@
             | Design: <a rel="nofollow" href="https://templatemo.com">TemplateMo</a></p>
 		</footer>
 	</div>
-	<script src="{% static 'movies/js/jquery.min.js' %}"></script>
-	<script src="{% static 'movies/js/parallax.min.js' %}"></script>
-	<script>
-		$(document).ready(function(){
-			// Handle click on paging links
-			$('.tm-paging-link').click(function(e){
-				e.preventDefault();
 
-				var page = $(this).text().toLowerCase();
-				$('.tm-gallery-page').addClass('hidden');
-				$('#tm-gallery-page-' + page).removeClass('hidden');
-				$('.tm-paging-link').removeClass('active');
-				$(this).addClass("active");
-			});
-		});
-	</script>
+
 </body>
 </html>
