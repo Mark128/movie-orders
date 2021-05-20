@@ -5,8 +5,18 @@
     <div class="row">
         {% for movie in movie_list %}
         <div class="col-md-3">
-            <h3>{{movie.name}}</h3>
-            <h4>{{movie.description}}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <h7>{{movie.name}}</h7>
+                </div>
+            </div>
+            {% if movie.image %}
+            <div class="row">
+                <div class="col-md-12">
+                   <img src='{% static movie.image %}' alt='Image' class='img-fluid tm-gallery-img'/>
+                </div>
+            </div>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
