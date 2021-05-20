@@ -21,6 +21,7 @@ class Genre(models.Model):
 
 class Series(models.Model):
     name = models.CharField(max_length=100, null=False)
+    short_name = models.CharField(max_length=100, null=True)
     description = models.CharField(max_length=500)
     genre = models.ForeignKey(Genre, on_delete=models.PROTECT, related_name='movie_genres')
     image = models.ImageField(upload_to=series_image_path, height_field=None, width_field=None, max_length=100, null=True)

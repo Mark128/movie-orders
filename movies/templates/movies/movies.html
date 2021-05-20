@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="box">
+    <div class="row">
+        {% for movie in movie_list %}
+        <div class="col-md-3">
+            <h3>{{movie.name}}</h3>
+            <h4>{{movie.description}}</h4>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

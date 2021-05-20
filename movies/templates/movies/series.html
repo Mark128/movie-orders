@@ -31,8 +31,7 @@
                     <img src='{% static s.image %}' alt='Image' class='img-fluid tm-gallery-img'/>
                     {% endif %}
                     <figcaption>
-                        <h4 class='tm-gallery-title'>{{s.name}}</h4>
-<!--                        <p class='tm-gallery-price'>2000-2020</p>-->
+                        <h4 class='tm-gallery-title'><a href="/series/{{s.short_name}}">{{s.name}}</a></h4>
                     </figcaption>
                 </figure>
             </article>

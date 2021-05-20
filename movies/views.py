@@ -17,6 +17,12 @@ def series(request):
     return render(request, 'movies/series.html', output)
 
 
+def series_detail(request, series_name):
+    movie_list = Movie.objects.filter(series__short_name=series_name).order_by('release_date')
+    output = {'movie_list': movie_list}
+    return render(request, 'movies/movies.html', output)
+
+
 def details(request, movie_id):
     try:
         movie = Movie.objects.get(pk=movie_id)
